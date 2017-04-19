@@ -1,8 +1,21 @@
-﻿<Properties StartupConfiguration="{43B32174-D46D-427A-AD3E-83454C2734BD}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="TrafikkskoleQuiz/Default.aspx">
+﻿<Properties StartupConfiguration="{9A1076DC-2DED-4335-97D8-B0370DC22248}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TrafikkskoleQuiz/Registrer.aspx">
     <Files>
-      <File FileName="TrafikkskoleQuiz/Default.aspx" Line="1" Column="1" />
+      <File FileName="TrafikkskoleQuiz/Default.aspx" Line="73" Column="32" />
+      <File FileName="TrafikkskoleQuiz/Registrer.aspx" Line="4" Column="22" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TrafikkskoleQuiz" expanded="True">
+            <Node name="TrafikkskoleQuiz" expanded="True">
+              <Node name="Default.aspx" expanded="True" />
+              <Node name="Registrer.aspx" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.TrafikkskoleQuiz PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
