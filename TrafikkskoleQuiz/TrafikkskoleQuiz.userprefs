@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{43B32174-D46D-427A-AD3E-83454C2734BD}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TrafikkskoleQuiz/Default.aspx">
+    <Files>
+      <File FileName="TrafikkskoleQuiz/Default.aspx" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.TrafikkskoleQuiz PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
