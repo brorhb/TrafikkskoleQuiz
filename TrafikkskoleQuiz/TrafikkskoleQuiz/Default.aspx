@@ -1,7 +1,8 @@
 ﻿<%@ Page Language="C#" Inherits="TrafikkskoleQuiz.Default" %>
 <!DOCTYPE html>
-<html lang="no">
-  	<head>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  	<head runat="server">
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,17 +50,6 @@
 	          		</button>
 	          		<a class="navbar-brand" href="#">Verdens Beste Trafikkskole</a>
 				</div>
-	        	<div id="navbar" class="navbar-collapse collapse">
-	          		<form class="navbar-form navbar-right">
-		            	<div class="form-group">
-		              		<input type="text" placeholder="Email" class="form-control">
-						</div>
-		            	<div class="form-group">
-		              		<input type="password" placeholder="Password" class="form-control">
-		            	</div>
-		            	<button type="submit" class="btn btn-success">Sign in</button>
-	          		</form>
-	        	</div><!--/.navbar-collapse -->
 	      	</div>
 	    </nav>
 
@@ -68,6 +58,15 @@
 	        	<h1>Velkommen</h1>
 	        	<p class="lead">Logg inn, eller registrer deg i verdens beste trafikkskole<br> Slik får du tilgang til en god quiz, som hjelper deg mot teorieksamen</p>
 				<a href="Registrer.aspx">Registrer deg</a>
+                <form id="loginFrom" runat="server">
+                    <label><h3>Username </h3></label>
+                    <asp:TextBox ID="loginUsername" runat="server"></asp:TextBox>
+                    <br />
+                    <label><h3>Password</h3></label>
+                    <asp:TextBox ID="loginPassword" runat="server" TextMode="Password"></asp:TextBox>
+                    <br />
+                    <asp:Button ID="registrerButton" runat="server" OnClick="loginButton_Click" Text="Submit" />
+                </form>
 			</div>
 
 	    </div><!-- /.container -->
