@@ -6,22 +6,45 @@
 <head runat="server">
     <title>Registrering</title>
     <style type="text/css">
-        .auto-style1 {
-            width: 100%;
-        }
-
+        
         .auto-style2 {
-            width: 282px;
+            width: 72px;
         }
 
         .auto-style3 {
-            width: 282px;
+            width: 72px;
             text-align: right;
         }
 
         .auto-style4 {
             width: 191px;
         }
+        .auto-style5 {
+            width: 72px;
+            text-align: left;
+            height: 23px;
+        }
+        .auto-style6 {
+            width: 191px;
+            height: 23px;
+        }
+        .auto-style7 {
+            height: 23px;
+            width: 139px;
+        }
+        .auto-style8 {
+            width: 72px;
+            text-align: left;
+        }
+        .auto-style9 {
+            left: 0px;
+            top: 0px;
+            margin-top:80px;
+        }
+        .auto-style10 {
+            width: 139px;
+        }
+
     </style>
 
 
@@ -46,7 +69,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Verdens Beste Trafikkskole</a>
+                <a class="navbar-brand" href="Default.aspx">Verdens Beste Trafikkskole</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right">
@@ -62,60 +85,56 @@
             <!--/.navbar-collapse -->
         </div>
     </nav>
-
-
-    <form id="form1" runat="server">
-        <table class="auto-style1">
-            <tr>
-                <td class="auto-style3">Username</td>
-                <td class="auto-style4">
-                    <asp:TextBox ID="UsernameTextBox" runat="server" Width="180px"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Not a valid username" ForeColor="Red" ControlToValidate="UsernameTextBox"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style3">Password</td>
-                <td class="auto-style4">
-                    <asp:TextBox ID="PasswordTextBox" runat="server" Width="180px"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Not a valid password" ForeColor="Red" ControlToValidate="PasswordTextBox"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style3">Confirm Password</td>
-                <td class="auto-style4">
-                    <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" Width="180px"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Not matcing password" ForeColor="Red" ControlToValidate="ConfirmPasswordTextBox"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
-        <div>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <form id="form1" runat="server">
+                <table class="auto-style9">
+                    <tr>
+                        <td class="auto-style5">Username </td>
+                        <td class="auto-style6">
+                            <asp:TextBox ID="UsernameTextBox" runat="server" Width="180px"></asp:TextBox>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Not a valid username" ForeColor="Red" ControlToValidate="UsernameTextBox"></asp:RequiredFieldValidator>
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style8">Password </td>
+                        <td class="auto-style4">
+                            <asp:TextBox ID="PasswordTextBox" runat="server" Width="180px" TextMode="Password"></asp:TextBox>
+                        </td>
+                        <td class="auto-style10">
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Not a valid password" ForeColor="Red" ControlToValidate="PasswordTextBox"></asp:RequiredFieldValidator>
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style3">&nbsp;</td>
+                        <td class="auto-style4">&nbsp;</td>
+                        <td class="auto-style10">
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">&nbsp;</td>
+                        <td class="auto-style4">&nbsp;</td>
+                        <td class="auto-style10">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style2">&nbsp;</td>
+                        <td class="auto-style4">
+                            <asp:Button ID="registrerButton" runat="server" OnClick="registrerButton_Click" Text="Submit" />
+                            <input id="Reset1" type="reset" value="reset" /></td>
+                        <td class="auto-style10">&nbsp;</td>
+                </table>
+                <div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
+
 </body>
 </html>
