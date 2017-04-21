@@ -12,12 +12,11 @@ namespace TrafikkskoleQuiz
     {
 
         MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
+        
         protected void registrerButton_Click(object sender, EventArgs e)
         {
             try

@@ -54,6 +54,7 @@
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
     <Content Include="Registrer.aspx" />
+    <Content Include="LoggedIn.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -72,6 +73,13 @@
     </Compile>
     <Compile Include="Registrer.aspx.designer.cs">
       <DependentUpon>Registrer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoggedIn.aspx.cs">
+      <DependentUpon>LoggedIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoggedIn.aspx.designer.cs">
+      <DependentUpon>LoggedIn.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
