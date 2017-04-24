@@ -23,7 +23,7 @@ namespace TrafikkskoleQuiz
             loadLastScore();
         }
 
-        private void loadLastScore()
+        protected void loadLastScore()
         {
             object username = Session["UserAuthentication"].ToString();
             MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
@@ -93,7 +93,7 @@ namespace TrafikkskoleQuiz
 
         protected void startQuizButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("");
+            Response.Redirect("Quiz.aspx");
         }
 
         protected void logOutButton_Click(object sender, EventArgs e)

@@ -56,6 +56,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Registrer.aspx" />
     <Content Include="LoggedIn.aspx" />
+    <Content Include="Quiz.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -81,6 +82,13 @@
     </Compile>
     <Compile Include="LoggedIn.aspx.designer.cs">
       <DependentUpon>LoggedIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Quiz.aspx.cs">
+      <DependentUpon>Quiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Quiz.aspx.designer.cs">
+      <DependentUpon>Quiz.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

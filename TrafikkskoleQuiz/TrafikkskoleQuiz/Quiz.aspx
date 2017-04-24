@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LoggedIn.aspx.cs" Inherits="TrafikkskoleQuiz.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Quiz.aspx.cs" Inherits="TrafikkskoleQuiz.WebForm2" %>
 
 <!DOCTYPE html>
 
@@ -14,9 +14,11 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <title>Welcome!</title>
+
+    <title>Quiz</title>
 </head>
 <body>
+
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -24,18 +26,13 @@
             </div>
         </div><!--/.nav-collapse -->
     </nav>
+
     <form id="form1" runat="server">
         <div class="jumbotron col-md-12">
             <div class="col-md-8 col-md-offset-2 text-center">
-                <h3>Velkommen tilbake <asp:Label runat="server" ID="usernameLabel"></asp:Label></h3>
-                <p><strong>Din highscore er: </strong><asp:Label runat="server" ID="highscoreLabel"></asp:Label> poeng</p>
-                <p><strong>Ditt forrige forsøk ga: </strong><asp:Label runat="server" ID="lastScoreLabel"></asp:Label> poeng</p>
-                <asp:Button runat="server" ID="startQuizButton" OnClick="startQuizButton_Click" Text="Start quizen" CssClass="btn-primary" />
+                <p>Ditt forrige forsøk ga: </><asp:Label runat="server" ID="lastScoreLabel"></asp:Label> poeng</p>
             </div>
         </div>
-        <footer>
-            <asp:Button ID="logOutButton" runat="server" Text="Log Out" OnClick="logOutButton_Click"/>
-        </footer>
     </form>
 </body>
 </html>
