@@ -33,9 +33,11 @@
                 <p>Ditt forrige forsøk ga: </><asp:Label runat="server" ID="lastScoreLabel"></asp:Label> poeng</p>
             </div>
             <div class="col-md-12">
-                <div id="questions" runat="server">
+                <h3>
+                    <div id="questions" runat="server">
 
-                </div>
+                    </div>
+                </h3>
             </div>
         </div>
     </form>
