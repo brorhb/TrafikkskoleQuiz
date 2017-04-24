@@ -20,6 +20,38 @@ namespace TrafikkskoleQuiz
             }
             loadUsername();
             loadHighscore();
+            loadLastScore();
+        }
+
+        private void loadLastScore()
+        {
+            object username = Session["UserAuthentication"].ToString();
+            MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
+            MySqlDataReader reader = null;
+
+            try
+            {
+                string sql = "SELECT lastScore FROM users WHERE username = '" + username + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lastScoreLabel.Text = reader.GetString("lastScore");
+                }
+            }
+            catch
+            {
+                lastScoreLabel.Text = "0";
+            }
+            finally
+            {
+                if (reader != null) reader.Close();
+                if (conn != null) conn.Close();
+            }
         }
 
         private void loadUsername()
@@ -57,6 +89,11 @@ namespace TrafikkskoleQuiz
                 if (reader != null) reader.Close();
                 if (conn != null) conn.Close();
             }
+        }
+
+        protected void startQuizButton_Click(object sender, EventArgs e)
+        {
+
         }
 
         protected void logOutButton_Click(object sender, EventArgs e)

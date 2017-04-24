@@ -28,7 +28,9 @@
         <div class="jumbotron col-md-12">
             <div class="col-md-8 col-md-offset-2 text-center">
                 <h3>Velkommen tilbake <asp:Label runat="server" ID="usernameLabel"></asp:Label></h3>
-                <p><strong>Din highscore er: </strong><asp:Label runat="server" ID="highscoreLabel"></asp:Label></p>
+                <p><strong>Din highscore er: </strong><asp:Label runat="server" ID="highscoreLabel"></asp:Label> poeng</p>
+                <p><strong>Ditt forrige forsøk ga: </strong><asp:Label runat="server" ID="lastScoreLabel"></asp:Label> poeng</p>
+                <asp:Button runat="server" ID="startQuizButton" OnClick="startQuizButton_Click" Text="Start quizen" CssClass="btn-primary" />
             </div>
         </div>
         <footer>
