@@ -31,27 +31,31 @@ namespace TrafikkskoleQuiz
         private void loadHighscore()
         {
             object username = Session["UserAuthentication"].ToString();
-            using (MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;"))
-            using (MySqlCommand cmd = new MySqlCommand("SELECT highscore FROM users WHERE username = " + username + ";"))
+            MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
+            MySqlDataReader reader = null;
+
+            try
             {
-                
-                cmd.Parameters.AddWithValue("@username", username);
+                string sql = "SELECT highscore FROM users WHERE username = '" + username + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
                 conn.Open();
-                try
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            highscoreLabel.Text = reader["highscore"].ToString();
-                        }
-                    }
+                    highscoreLabel.Text = reader.GetString("highscore");
                 }
-                catch (Exception e) 
-                {
-                    highscoreLabel.Text = "0";
-                    Response.Write("<script>alert" + e + "</script>");
-                }
+            }
+            catch
+            {
+                highscoreLabel.Text = "0";
+            }
+            finally
+            {
+                if (reader != null) reader.Close();
+                if (conn != null) conn.Close();
             }
         }
 
@@ -60,5 +64,7 @@ namespace TrafikkskoleQuiz
             Session["UserAuthentication"] = null;
             Response.Redirect("Default.aspx");
         }
+
+
     }
 }
