@@ -11,7 +11,10 @@ namespace TrafikkskoleQuiz
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["UserAuthentication"] == null )
+            {
+                Response.Redirect("Default.aspx");
+            }
         }
     }
 }

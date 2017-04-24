@@ -22,6 +22,7 @@ namespace TrafikkskoleQuiz
                 cmd.Parameters.AddWithValue("@password", password);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
+                Session["UserAuthentication"] = username;
                 Response.Write("<script>alert('Login was succsesful')</script>");
                 Response.Redirect("LoggedIn.aspx");
             }
