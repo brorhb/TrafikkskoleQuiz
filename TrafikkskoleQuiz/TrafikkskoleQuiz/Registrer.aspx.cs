@@ -29,10 +29,11 @@ namespace TrafikkskoleQuiz
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 Response.Write("<script>alert('Registraion was succsesful')</script>");
+                Response.Redirect("Default.aspx");
             }
             catch (MySqlException ex)
             {
-                Response.Write("<script>alert('" + ex + "')</script>");
+                Response.Write("Username already in use");
             }
 
 

@@ -7,46 +7,11 @@
     <title>Registrering</title>
     <style type="text/css">
         
-        .auto-style2 {
-            width: 72px;
-        }
-
-        .auto-style3 {
-            width: 72px;
-            text-align: right;
-        }
-
-        .auto-style4 {
-            width: 191px;
-        }
-        .auto-style5 {
-            width: 72px;
-            text-align: left;
-            height: 23px;
-        }
-        .auto-style6 {
-            width: 191px;
-            height: 23px;
-        }
-        .auto-style7 {
-            height: 23px;
-            width: 139px;
-        }
-        .auto-style8 {
-            width: 72px;
-            text-align: left;
-        }
-        .auto-style9 {
-            left: 0px;
-            top: 0px;
-            margin-top:80px;
-        }
-        .auto-style10 {
-            width: 139px;
-        }
+        
 
     </style>
 
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
