@@ -93,7 +93,7 @@ namespace TrafikkskoleQuiz
 
         protected void startQuizButton_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("");
         }
 
         protected void logOutButton_Click(object sender, EventArgs e)
