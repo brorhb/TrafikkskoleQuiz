@@ -1,0 +1,12 @@
+/Users/Bror/Projects/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/Bror/Projects/TrafikkskoleQuiz/TrafikkskoleQuiz/bin/TrafikkskoleQuiz.dll.mdb
+/Users/Bror/Projects/TrafikkskoleQuiz/TrafikkskoleQuiz/bin/TrafikkskoleQuiz.dll
+/Users/Bror/Projects/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/TrafikkskoleQuiz.dll
+/Users/Bror/Projects/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/TrafikkskoleQuiz.dll.mdb
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/bin/TrafikkskoleQuiz.dll.mdb
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/bin/TrafikkskoleQuiz.dll
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/TrafikkskoleQuiz.dll
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/TrafikkskoleQuiz.dll.mdb
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/bin/TrafikkskoleQuiz.pdb
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/TrafikkskoleQuiz.pdb

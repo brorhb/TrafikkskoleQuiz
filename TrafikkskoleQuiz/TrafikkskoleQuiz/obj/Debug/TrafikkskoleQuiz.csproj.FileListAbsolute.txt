@@ -1,0 +1,14 @@
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/bin/TrafikkskoleQuiz.dll
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/bin/TrafikkskoleQuiz.pdb
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/TrafikkskoleQuiz.csprojResolveAssemblyReference.cache
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/TrafikkskoleQuiz.csproj.CoreCompileInputs.cache
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/TrafikkskoleQuiz.dll
+/Users/Bror/GitHub/TrafikkskoleQuiz/TrafikkskoleQuiz/TrafikkskoleQuiz/obj/Debug/TrafikkskoleQuiz.pdb
+Z:\GitHub\TrafikkskoleQuiz\TrafikkskoleQuiz\TrafikkskoleQuiz\bin\TrafikkskoleQuiz.dll.config
+Z:\GitHub\TrafikkskoleQuiz\TrafikkskoleQuiz\TrafikkskoleQuiz\bin\TrafikkskoleQuiz.dll
+Z:\GitHub\TrafikkskoleQuiz\TrafikkskoleQuiz\TrafikkskoleQuiz\bin\TrafikkskoleQuiz.pdb
+Z:\GitHub\TrafikkskoleQuiz\TrafikkskoleQuiz\TrafikkskoleQuiz\obj\Debug\TrafikkskoleQuiz.csprojResolveAssemblyReference.cache
+Z:\GitHub\TrafikkskoleQuiz\TrafikkskoleQuiz\TrafikkskoleQuiz\obj\Debug\TrafikkskoleQuiz.dll
+Z:\GitHub\TrafikkskoleQuiz\TrafikkskoleQuiz\TrafikkskoleQuiz\obj\Debug\TrafikkskoleQuiz.pdb
+Z:\GitHub\TrafikkskoleQuiz\TrafikkskoleQuiz\TrafikkskoleQuiz\bin\MySql.Data.dll
+Z:\GitHub\TrafikkskoleQuiz\TrafikkskoleQuiz\TrafikkskoleQuiz\bin\MySql.Data.xml
