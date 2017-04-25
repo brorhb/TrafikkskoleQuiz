@@ -59,6 +59,7 @@
     <Content Include="Quiz.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="db.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

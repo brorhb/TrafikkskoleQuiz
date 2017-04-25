@@ -24,20 +24,28 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="loggedIn.aspx">Verdens beste trafikkskole</a>
             </div>
-        </div><!--/.nav-collapse -->
+        </div>
+        <!--/.nav-collapse -->
     </nav>
 
     <form id="form1" runat="server">
         <div class="jumbotron col-md-12">
             <div class="col-md-8 col-md-offset-2 text-center">
-                <p>Ditt forrige forsøk ga: </><asp:Label runat="server" ID="lastScoreLabel"></asp:Label> poeng</p>
+                <p>Ditt forrige forsøk ga: </><asp:Label runat="server" ID="lastScoreLabel"></asp:Label>
+                    poeng</p>
             </div>
             <div class="col-md-12">
-                <h3>
-                    <div id="questions" runat="server">
-
-                    </div>
-                </h3>
+                <div>
+                    <h3>
+                        <div id="questions" runat="server">
+                        </div>
+                    </h3>
+                    <h4>
+                        <div id="answer" runat="server">
+                        </div>
+                    </h4>
+                </div>
+                <asp:Button ID="nextButton" runat="server" Text="Neste" OnClick="nextButton_Click" />
             </div>
         </div>
     </form>
