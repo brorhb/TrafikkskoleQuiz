@@ -14,12 +14,18 @@ namespace TrafikkskoleQuiz
     public partial class WebForm2 :  WebForm1
     {
         ManualResetEvent mre = new ManualResetEvent(false);
-
+        int i = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserAuthentication"] == null)
             {
                 Response.Redirect("Default.aspx");
+            }
+            if(Session["numberOfQuestionsDone"] != null)
+            {
+                object y = Session["numberOfQuestionsDone"];
+                string numberOfQuestionsDone = y.ToString();
+                i = int.Parse(numberOfQuestionsDone);
             }
             loadQuestions();
             loadLastScore();
@@ -30,7 +36,7 @@ namespace TrafikkskoleQuiz
             object username = Session["UserAuthentication"].ToString();
             MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
             MySqlDataReader readerQ = null;
-            
+
             HtmlGenericControl liq = new HtmlGenericControl("br");
             try
             {
@@ -83,11 +89,47 @@ namespace TrafikkskoleQuiz
             {
 
             }
-            
+
+        }
+
+        private void quizDone()
+        {
+            if (i == 20)
+            {
+                object username = Session["UserAuthentication"].ToString();
+                MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
+                MySqlDataReader reader;
+                try
+                {
+                    string sql = "SELECT lastScore FROM users WHERE username = '" + username + "'";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    conn.Open();
+
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        string newScore = reader.GetString("lastScore");
+                        int score = int.Parse(newScore);
+                        Response.Write("<script>alert('Du fikk: " + newScore + "/20 riktige')</script>");
+                    }
+                }
+                catch
+                {
+                    Response.Write("<script>alert('Du fikk: 0/20 riktige')</script>");
+                    
+                }
+            }
+
         }
 
         protected void nextButton_Click(object sender, EventArgs e)
         {
+            i++;
+            Session["numberOfQuestionsDone"] = i;
+            testLabel.Text = i.ToString();
+            quizDone();
         }
+
     }
 }

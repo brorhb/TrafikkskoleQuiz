@@ -46,6 +46,7 @@
                     </h4>
                 </div>
                 <asp:Button ID="nextButton" runat="server" Text="Neste" OnClick="nextButton_Click" />
+                <asp:Label ID="testLabel" runat="server"></asp:Label>
             </div>
         </div>
     </form>

@@ -21,6 +21,7 @@ namespace TrafikkskoleQuiz
             loadUsername();
             loadHighscore();
             loadLastScore();
+            Session["numberOfQuestionsDone"] = null;
         }
 
         protected void loadLastScore()
