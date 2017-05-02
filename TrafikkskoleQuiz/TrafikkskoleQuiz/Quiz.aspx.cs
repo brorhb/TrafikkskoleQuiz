@@ -15,6 +15,8 @@ namespace TrafikkskoleQuiz
     {
         ManualResetEvent mre = new ManualResetEvent(false);
         int i = 0;
+        public string questionID = "1";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserAuthentication"] == null)
@@ -31,7 +33,7 @@ namespace TrafikkskoleQuiz
             loadLastScore();
         }
 
-        private void loadQuestions()
+        public void loadQuestions()
         {
             object username = Session["UserAuthentication"].ToString();
             MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
@@ -72,7 +74,7 @@ namespace TrafikkskoleQuiz
             MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
             try
             {
-                string answerSQL = "SELECT * FROM answer WHERE questionID = @questionID ORDER BY RAND() LIMIT 4;";
+                string answerSQL = "SELECT * FROM answer WHERE questionID = @questionID ORDER BY RAND();";
                 MySqlCommand cmdA = new MySqlCommand(answerSQL, conn);
                 cmdA.Parameters.AddWithValue("@questionID", questionID);
                 conn.Open();
@@ -82,6 +84,7 @@ namespace TrafikkskoleQuiz
                     Label answerLabel = new Label();
                     answer.Controls.Add(answerLabel);
                     answerLabel.Text = readerA.GetString("answer");
+                    int trueOrFalse = readerA.GetInt16("correct");
                     answer.Controls.Add(new Literal() { ID = "row", Text = "<br/>" });
                 }
             }

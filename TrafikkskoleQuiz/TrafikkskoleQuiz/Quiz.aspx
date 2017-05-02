@@ -45,6 +45,7 @@
                         </div>
                     </h4>
                 </div>
+                <asp:Button ID="validateAnswer" runat="server" Text="Bekreft" OnClick="validateAnswer_Click" />
                 <asp:Button ID="nextButton" runat="server" Text="Neste" OnClick="nextButton_Click" />
                 <asp:Label ID="testLabel" runat="server"></asp:Label>
             </div>
