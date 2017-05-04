@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using System.Web.UI.HtmlControls;
 using System.Threading;
 using System.Data;
+using System.IO;
 
 namespace TrafikkskoleQuiz
 {
@@ -79,6 +80,7 @@ namespace TrafikkskoleQuiz
             Session["prevCorrectAnswer"] = questionID;
             MySqlDataReader readerA;
             MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
+            
             try
             {
                 string answerSQL = "SELECT * FROM answer WHERE questionID = @questionID ORDER BY RAND();";
@@ -86,20 +88,48 @@ namespace TrafikkskoleQuiz
                 cmdA.Parameters.AddWithValue("@questionID", questionID);
                 conn.Open();
                 readerA = cmdA.ExecuteReader();
+                
                 while (readerA.Read())
                 {
+                    int trueOrFalse = readerA.GetInt16("correct");
+                    string answerString = readerA.GetString("answer");
+                    ;
+
+                    //answer.Controls.Add();
+
                     Label answerLabel = new Label();
                     answer.Controls.Add(answerLabel);
-                    answerLabel.Text = readerA.GetString("answer");
-                    int trueOrFalse = readerA.GetInt16("correct");
+                    answerLabel.Text = writeRadiobutton(trueOrFalse, answerString);
+
                     answer.Controls.Add(new Literal() { ID = "row", Text = "<br/>" });
+                    
                 }
+                
             }
             catch
             {
 
             }
 
+        }
+
+        private string writeRadiobutton(int trueOrFalse, string answerString)
+        {
+            string type = "radio";
+            string name = "id";
+            string value = trueOrFalse.ToString();
+            StringWriter stringWriter = new StringWriter();
+            using (HtmlTextWriter writer = new HtmlTextWriter(stringWriter))
+            {
+                writer.AddAttribute(HtmlTextWriterAttribute.Type, type);
+                writer.AddAttribute(HtmlTextWriterAttribute.Name, name);
+                writer.AddAttribute(HtmlTextWriterAttribute.Value, value);
+                writer.RenderBeginTag(HtmlTextWriterTag.Input);
+                writer.Write(answerString);
+                writer.RenderEndTag();
+                string html = stringWriter.ToString();
+            }
+            return stringWriter.ToString();
         }
 
         private void quizDone()
