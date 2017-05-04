@@ -18,6 +18,9 @@ namespace TrafikkskoleQuiz
         int i = 0;
         public string questionID;
         string prevCorrectID;
+        int points = 1;
+
+        Label answerLabel;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,6 +38,12 @@ namespace TrafikkskoleQuiz
             {
                 object y = Session["prevCorrectAnswer"];
                 prevCorrectID = y.ToString();
+            }
+            if (Session["points"] != null)
+            {
+                object y = Session["points"];
+                string pointsUntilNow = y.ToString();
+                points = int.Parse(pointsUntilNow);
             }
             loadQuestions();
             loadLastScore();
@@ -93,11 +102,8 @@ namespace TrafikkskoleQuiz
                 {
                     int trueOrFalse = readerA.GetInt16("correct");
                     string answerString = readerA.GetString("answer");
-                    ;
 
-                    //answer.Controls.Add();
-
-                    Label answerLabel = new Label();
+                    answerLabel = new Label();
                     answer.Controls.Add(answerLabel);
                     answerLabel.Text = writeRadiobutton(trueOrFalse, answerString);
 
@@ -111,6 +117,32 @@ namespace TrafikkskoleQuiz
 
             }
 
+        }
+
+        private bool isCorrect()
+        {
+            bool isUserCorrect = false;
+            if (true)
+            {
+                Session["points"] = points+1;
+                MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
+                string updateSql = "UPDATE users SET lastScore = @plus1 WHERE username = @username;";
+                MySqlCommand cmdA = new MySqlCommand(updateSql, conn);
+                cmdA.Parameters.AddWithValue("@plus1", points);
+                cmdA.Parameters.AddWithValue("@username", usernameString());
+                conn.Open();
+                int numRowsUpdated = cmdA.ExecuteNonQuery();
+                cmdA.Dispose();
+
+                testLabel.Text = numRowsUpdated.ToString();
+
+                isUserCorrect = true;
+            }
+            else
+            {
+                isUserCorrect = false;
+            }
+            return isUserCorrect;
         }
 
         private string writeRadiobutton(int trueOrFalse, string answerString)
@@ -165,6 +197,7 @@ namespace TrafikkskoleQuiz
 
         protected void nextButton_Click(object sender, EventArgs e)
         {
+            isCorrect();
             MySqlDataReader readerA;
             MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
             string correctAnswerSql = "SELECT * FROM answer WHERE questionID = @questionID AND correct = 1;";
@@ -186,7 +219,7 @@ namespace TrafikkskoleQuiz
             }
             i++;
             Session["numberOfQuestionsDone"] = i;
-            testLabel.Text = i.ToString();
+            
             quizDone();
         }
 

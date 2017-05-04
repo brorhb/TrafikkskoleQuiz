@@ -30,10 +30,6 @@
 
     <form id="form1" runat="server">
         <div class="jumbotron col-md-12">
-            <div class="col-md-8 col-md-offset-2 text-center">
-                <p>Ditt forrige forsøk ga: </><asp:Label runat="server" ID="lastScoreLabel"></asp:Label>
-                    poeng</p>
-            </div>
             <div class="col-md-12">
                 <div>
                     <h3>

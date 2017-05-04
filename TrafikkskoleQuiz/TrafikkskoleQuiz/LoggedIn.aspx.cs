@@ -22,6 +22,7 @@ namespace TrafikkskoleQuiz
             loadHighscore();
             loadLastScore();
             Session["numberOfQuestionsDone"] = null;
+            Session["points"] = null;
         }
 
         protected void loadLastScore()
@@ -46,7 +47,7 @@ namespace TrafikkskoleQuiz
             }
             catch
             {
-                lastScoreLabel.Text = "0";
+                //lastScoreLabel.Text = "0";
             }
             finally
             {
@@ -59,6 +60,13 @@ namespace TrafikkskoleQuiz
         {
             object username = Session["UserAuthentication"];
             usernameLabel.Text = username.ToString();
+        }
+
+        protected string usernameString()
+        {
+            object username = Session["UserAuthentication"];
+            string usernameStr = username.ToString();
+            return usernameStr;
         }
 
         private void loadHighscore()
