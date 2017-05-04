@@ -76,6 +76,7 @@ namespace TrafikkskoleQuiz
 
         protected void loadAnswer(string questionID)
         {
+            Session["prevCorrectAnswer"] = questionID;
             MySqlDataReader readerA;
             MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
             try
@@ -154,9 +155,8 @@ namespace TrafikkskoleQuiz
                 correctAnswer.Controls.Add(new Literal() { ID = "row", Text = "<br/>" });
             }
             i++;
-            Session["prevCorrectAnswer"] = questionID;
             Session["numberOfQuestionsDone"] = i;
-            testLabel.Text = questionID;
+            testLabel.Text = i.ToString();
             quizDone();
         }
 
