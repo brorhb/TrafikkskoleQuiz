@@ -15,7 +15,8 @@ namespace TrafikkskoleQuiz
     {
         ManualResetEvent mre = new ManualResetEvent(false);
         int i = 0;
-        public string questionID = "1";
+        public string questionID;
+        string prevCorrectID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,6 +29,11 @@ namespace TrafikkskoleQuiz
                 object y = Session["numberOfQuestionsDone"];
                 string numberOfQuestionsDone = y.ToString();
                 i = int.Parse(numberOfQuestionsDone);
+            }
+            if (Session["prevCorrectAnswer"] != null)
+            {
+                object y = Session["prevCorrectAnswer"];
+                prevCorrectID = y.ToString();
             }
             loadQuestions();
             loadLastScore();
@@ -53,7 +59,7 @@ namespace TrafikkskoleQuiz
                     questions.Controls.Add(liq);
                     Label questionLabel = new Label();
                     questions.Controls.Add(questionLabel);
-                    string questionID = readerQ.GetString("questionID");
+                    questionID = readerQ.GetString("questionID");
                     questionLabel.Text = readerQ.GetString("question");
                     loadAnswer(questionID);
                 }
@@ -128,9 +134,29 @@ namespace TrafikkskoleQuiz
 
         protected void nextButton_Click(object sender, EventArgs e)
         {
+            MySqlDataReader readerA;
+            MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
+            string correctAnswerSql = "SELECT * FROM answer WHERE questionID = @questionID AND correct = 1;";
+            MySqlCommand cmdA = new MySqlCommand(correctAnswerSql, conn);
+            cmdA.Parameters.AddWithValue("@questionID", prevCorrectID);
+            conn.Open();
+            readerA = cmdA.ExecuteReader();
+            while (readerA.Read())
+            {
+                Label infoLabel = new Label();
+                correctAnswer.Controls.Add(infoLabel);
+                infoLabel.ForeColor = System.Drawing.Color.Green;
+                infoLabel.Text = "Riktig svar på forrige spørsmål var: ";
+                Label correctAnswerLabel = new Label();
+                correctAnswerLabel.ForeColor = System.Drawing.Color.Green;
+                correctAnswer.Controls.Add(correctAnswerLabel);
+                correctAnswerLabel.Text = readerA.GetString("answer");
+                correctAnswer.Controls.Add(new Literal() { ID = "row", Text = "<br/>" });
+            }
             i++;
+            Session["prevCorrectAnswer"] = questionID;
             Session["numberOfQuestionsDone"] = i;
-            testLabel.Text = i.ToString();
+            testLabel.Text = questionID;
             quizDone();
         }
 
