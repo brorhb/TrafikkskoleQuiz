@@ -9,6 +9,7 @@ using System.Web.UI.HtmlControls;
 using System.Threading;
 using System.Data;
 using System.IO;
+using System.Drawing;
 
 namespace TrafikkskoleQuiz
 {
@@ -19,6 +20,7 @@ namespace TrafikkskoleQuiz
         public string questionID;
         string prevCorrectID;
         int points = 1;
+        int selectedValueInt;
 
         Label answerLabel;
 
@@ -87,6 +89,7 @@ namespace TrafikkskoleQuiz
         protected void loadAnswer(string questionID)
         {
             Session["prevCorrectAnswer"] = questionID;
+            List<RadioButton> radioButtons = new List<RadioButton>();
             MySqlDataReader readerA;
             MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
             
@@ -107,7 +110,14 @@ namespace TrafikkskoleQuiz
                     answer.Controls.Add(answerLabel);
                     answerLabel.Text = writeRadiobutton(trueOrFalse, answerString);
 
-                    answer.Controls.Add(new Literal() { ID = "row", Text = "<br/>" });
+                    /*RadioButton answerButton = new RadioButton();
+                    answerButton.ID = "answer";
+                    answerButton.GroupName = "answers";
+                    answerButton.Text = answerString;
+                    answerButton.Checked = false;
+                    radioButtons.Add(answerButton);*/
+
+                    answer.Controls.Add(new Literal() {  Text = "<br/>" });
                     
                 }
                 
@@ -122,7 +132,9 @@ namespace TrafikkskoleQuiz
         private bool isCorrect()
         {
             bool isUserCorrect = false;
-            if (true)
+            string selectedValue = Request.Form["answers"].ToString();
+            selectedValueInt = int.Parse(selectedValue);
+            if (selectedValueInt == 1)
             {
                 Session["points"] = points+1;
                 MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
@@ -134,8 +146,6 @@ namespace TrafikkskoleQuiz
                 int numRowsUpdated = cmdA.ExecuteNonQuery();
                 cmdA.Dispose();
 
-                testLabel.Text = numRowsUpdated.ToString();
-
                 isUserCorrect = true;
             }
             else
@@ -145,10 +155,25 @@ namespace TrafikkskoleQuiz
             return isUserCorrect;
         }
 
+        private void updateHighscore()
+        {
+            if (points > int.Parse(loadHighscoreString()))
+            {
+                MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
+                string updateSql = "UPDATE users SET highscore = @points WHERE username = @username;";
+                MySqlCommand cmdA = new MySqlCommand(updateSql, conn);
+                cmdA.Parameters.AddWithValue("@points", points);
+                cmdA.Parameters.AddWithValue("@username", usernameString());
+                conn.Open();
+                int numRowsUpdated = cmdA.ExecuteNonQuery();
+                cmdA.Dispose();
+            }
+        }
+
         private string writeRadiobutton(int trueOrFalse, string answerString)
         {
             string type = "radio";
-            string name = "id";
+            string name = "answers";
             string value = trueOrFalse.ToString();
             StringWriter stringWriter = new StringWriter();
             using (HtmlTextWriter writer = new HtmlTextWriter(stringWriter))
@@ -166,8 +191,9 @@ namespace TrafikkskoleQuiz
 
         private void quizDone()
         {
-            if (i == 20)
+            if (i == 5)
             {
+                updateHighscore();
                 object username = Session["UserAuthentication"].ToString();
                 MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
                 MySqlDataReader reader;
@@ -183,7 +209,7 @@ namespace TrafikkskoleQuiz
                     {
                         string newScore = reader.GetString("lastScore");
                         int score = int.Parse(newScore);
-                        Response.Write("<script>alert('Du fikk: " + newScore + "/20 riktige')</script>");
+                        Response.Write("<script>alert('Du fikk: " + newScore + "/20 riktige'); window.location.href='LoggedIn.aspx';</script>");
                     }
                 }
                 catch
@@ -201,6 +227,7 @@ namespace TrafikkskoleQuiz
             MySqlDataReader readerA;
             MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
             string correctAnswerSql = "SELECT * FROM answer WHERE questionID = @questionID AND correct = 1;";
+
             MySqlCommand cmdA = new MySqlCommand(correctAnswerSql, conn);
             cmdA.Parameters.AddWithValue("@questionID", prevCorrectID);
             conn.Open();
@@ -215,11 +242,11 @@ namespace TrafikkskoleQuiz
                 correctAnswerLabel.ForeColor = System.Drawing.Color.Green;
                 correctAnswer.Controls.Add(correctAnswerLabel);
                 correctAnswerLabel.Text = readerA.GetString("answer");
-                correctAnswer.Controls.Add(new Literal() { ID = "row", Text = "<br/>" });
+                correctAnswer.Controls.Add(new Literal() {  Text = "<br/>" });
             }
             i++;
             Session["numberOfQuestionsDone"] = i;
-            
+            testLabel.Text = i.ToString() + " / 20";
             quizDone();
         }
 

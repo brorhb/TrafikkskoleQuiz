@@ -100,6 +100,39 @@ namespace TrafikkskoleQuiz
             }
         }
 
+        protected string loadHighscoreString()
+        {
+            string highscoreString = "";
+            object username = Session["UserAuthentication"].ToString();
+            MySqlConnection conn = new MySqlConnection("Database=trafikkskole; Data Source=localhost;User Id=root; Password=;");
+            MySqlDataReader reader = null;
+
+            try
+            {
+                string sql = "SELECT highscore FROM users WHERE username = '" + username + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    highscoreString = reader.GetString("highscore");
+                }
+            }
+            catch
+            {
+                highscoreString = "0";
+            }
+            finally
+            {
+                if (reader != null) reader.Close();
+                if (conn != null) conn.Close();
+            }
+            return highscoreString;
+        }
+
         protected void startQuizButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("Quiz.aspx");

@@ -37,7 +37,7 @@
                         </div>
                     </h3>
                     <h4>
-                        <div id="answer" runat="server">
+                        <div name="answer" action="Quiz.aspx.cs" id="answer" runat="server">
                         </div>
                         <br />
                         <div id="correctAnswer" runat="server">
