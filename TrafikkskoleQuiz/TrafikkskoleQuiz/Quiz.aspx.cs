@@ -21,6 +21,7 @@ namespace TrafikkskoleQuiz
         string prevCorrectID;
         int points = 1;
         int selectedValueInt;
+        string answerByUser;
 
         Label answerLabel;
 
@@ -146,10 +147,13 @@ namespace TrafikkskoleQuiz
                 int numRowsUpdated = cmdA.ExecuteNonQuery();
                 cmdA.Dispose();
 
+                Response.Write("<script>alert('Du svarte riktig!');</script>");
+
                 isUserCorrect = true;
             }
             else
             {
+                Response.Write("<script>alert('Du svarte desverre feil!');</script>");
                 isUserCorrect = false;
             }
             return isUserCorrect;
@@ -181,6 +185,7 @@ namespace TrafikkskoleQuiz
                 writer.AddAttribute(HtmlTextWriterAttribute.Type, type);
                 writer.AddAttribute(HtmlTextWriterAttribute.Name, name);
                 writer.AddAttribute(HtmlTextWriterAttribute.Value, value);
+                writer.AddAttribute(HtmlTextWriterAttribute.Id, answerString);
                 writer.RenderBeginTag(HtmlTextWriterTag.Input);
                 writer.Write(answerString);
                 writer.RenderEndTag();
@@ -188,6 +193,7 @@ namespace TrafikkskoleQuiz
             }
             return stringWriter.ToString();
         }
+
 
         private void quizDone()
         {
